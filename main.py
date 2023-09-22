@@ -26,20 +26,21 @@ unique_project_names = set()
 
 # Iterate over skills and extract 3 projects for each skill
 projects = []
-for skill in skills:
-# Find 3 projects for the skill
-    skill_projects = db.find({"skills": skill}).limit(3)
 output = {}
+for skill in skills:
+    # Find 3 projects for the skill
+  skill_projects = db.find({"skills": skill}).limit(10)
 # Add the projects to the list, making sure to avoid duplicates
-for project in skill_projects:
-    # if project["name"] not in unique_project_names:
-    if project["_id"] not in unique_project_names:
-        projects.append(project)
-        output[project] = project["skills"]
-        unique_project_names.add(project["_id"])
+  for project in skill_projects:
+      # if project["name"] not in unique_project_names:
+      if project["_id"] not in unique_project_names:
+          projects.append(project)
+          output.update({project["_id"] : project["skills"]})
+          # output[project] = project["skills"]
+          unique_project_names.add(project["_id"])
 
   # Return the list of projects
-print(projects)
+# print(projects)
 print(output)
 # return jsonify({"projects": projects})
 
