@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-
+import httpx
 origins = ["*"]
 app = FastAPI()
 
