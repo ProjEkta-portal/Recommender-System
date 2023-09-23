@@ -1,12 +1,9 @@
 from fastapi import FastAPI, HTTPException, Request
-import httpx
 
 app = FastAPI()
 
 # You don't need the dotenv library in FastAPI. Environment variables can be accessed directly.
 
-# data = httpx.get("http://localhost:5000/api/projects")
-# projects = data.json()
 
 @app.post("/recommend-projects")
 async def get_projects(request: Request):
