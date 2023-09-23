@@ -1,10 +1,17 @@
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 
+origins = ["*"]
 app = FastAPI()
 
-# You don't need the dotenv library in FastAPI. Environment variables can be accessed directly.
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+    )
 @app.post("/recommend-projects")
 async def get_projects(request: Request):
     # Get JSON body from request
