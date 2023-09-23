@@ -5,14 +5,14 @@ import requests
 import os
 load_dotenv()
 
-PASSWORD = os.getenv('PASS')
+# PASSWORD = os.getenv('PASS')
 app = Flask(__name__)
 
 
 # data = requests.get("http://localhost:5000/api/projects")
 # projects = data.json()
 # Get HTTP request from frontend
-@app.route("/projects", methods=["POST"])
+@app.route("/recommend-projects", methods=["POST"])
 def get_projects():
 #   # Get JSON body from request
   json_body = request.get_json()
@@ -23,7 +23,8 @@ def get_projects():
   unique_project_names = set()
 
   # Make a GET request to the backend API to fetch project data
-  backend_api_url = "http://localhost:5000/api/projects"
+  # backend_api_url = "http://localhost:5000/api/projects"
+  backend_api_url = "https://eager-bass-sombrero.cyclic.cloud/api/projects"
   response = requests.get(backend_api_url)
 
   # Check if the API request was successful
